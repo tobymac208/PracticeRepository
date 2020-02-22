@@ -81,3 +81,25 @@ def double_index(lst, index):
     except IndexError:
         return lst
 print(double_index([3, 8, -10, 12], 2))
+
+# ---------- #
+
+# 5: Middle Item
+"""
+Create a function called middle_element that has one parameter named lst.
+
+If there are an odd number of elements in lst, the function should return the middle element.
+If there are an even number of elements, the function should return the average of the middle two elements.
+"""
+def middle_element(lst):
+    # check if it's an even number
+    if len(lst) % 2 == 0:
+        # return the average of the middle two items
+        sum_of_center_two = lst[int(len(lst)/2)] + lst[int(len(lst)/2 - 1)]
+        # calculate average
+        return sum_of_center_two / 2
+
+    # return the center item of the list
+    return lst[int(len(lst)/2)]
+
+print(middle_element([5, 2, -10, -4, 4, 5]))
