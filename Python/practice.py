@@ -1,64 +1,26 @@
-# global variable for the cost of shipping
-premium_shipping_cost = 125.00
+highlighted_poems = "Afterimages:Audre Lorde:1997,  The Shadow:William Carlos Williams:1915, Ecstasy:Gabriela Mistral:1925,   Georgia Dusk:Jean Toomer:1923,   Parting Before Daybreak:An Qi:2014, The Untold Want:Walt Whitman:1871, Mr. Grumpledump's Song:Shel Silverstein:2004, Angel Sound Mexico City:Carmen Boullosa:2013, In Love:Kamala Suraiyya:1965, Dream Variations:Langston Hughes:1994, Dreamwood:Adrienne Rich:1987"
 
-# returns the cost for ground shipping
-def calculate_ground_shipping(weight):
-  flat_charge = 20
-  total = 0
+#print(highlighted_poems)
 
-  if weight <= 2:
-    total += 1.50*weight + flat_charge
-  elif weight > 2 and weight <= 6:
-    total += 3.00*weight + flat_charge
-  elif weight > 6 and weight <= 10:
-    total += 4.00*weight + flat_charge
-  else:
-    total += 4.75*weight + flat_charge
+# split at commas
+highlighted_poems_list = highlighted_poems.split(',')
+#print(highlighted_poems_list)
 
-  return total
+# strip whitespace
+highlighted_poems_stripped = []
+for i in range(len(highlighted_poems_list)):
+    highlighted_poems_stripped.append(highlighted_poems_list[i].strip())
+#print(highlighted_poems_stripped)
 
-# returns the cost for drone shipping
-def calculate_drone_shipping(weight):
-  total = 0
+highlighted_poems_details = []
 
-  if weight <= 2:
-    total += 4.50*weight
-  elif weight > 2 and weight <= 6:
-    total += 9.00*weight
-  elif weight > 6 and weight <= 10:
-    total += 12.00*weight
-  else:
-    total += 14.75*weight
-  return total
+for i in range(len(highlighted_poems_stripped)):
+    highlighted_poems_details.append(highlighted_poems_stripped[i].split(':'))
+    print(highlighted_poems_stripped[i])
 
-# test code
-print(str(calculate_ground_shipping(8.4)))
-print(str(calculate_drone_shipping(1.5)))
+print(highlighted_poems_details)
 
-# TODO: Tell the user the cheapest way to get their package delivered
-# TODO: Create a method to find the cheapest option, given the weight
-def get_cheapest_option(weight):
-  calculate_ground = calculate_ground_shipping(weight)
-  calculate_drone = calculate_drone_shipping(weight)
-
-  # track the lowest value
-  current_lowest = 0
-  # track the name of the lowest
-  current_lowest_name = ""
-
-  # decide which is the cheapest for the given weight
-  if calculate_ground < calculate_drone and calculate_ground < premium_shipping_cost:
-    current_lowest = calculate_ground
-    current_lowest_name = "Ground Shipping"
-  elif calculate_drone < premium_shipping_cost:
-      current_lowest = calculate_drone
-      current_lowest_name = "Drone Shipping"
-  else:
-      current_lowest = premium_shipping_cost
-      current_lowest_name = "Premium Shipping"
-  return current_lowest_name, current_lowest
-
-weightOfItem = float(input("Please enter the weight of your item: "))
-cheapest_name, cheapest_value = get_cheapest_option(weightOfItem)
-
-print("Your cheapest option is to get " + cheapest_name + " for " + str(cheapest_value) + " dollars.")
+# titles, posts, and dates
+titles = []
+posts = []
+dates = []
