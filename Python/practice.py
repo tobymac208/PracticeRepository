@@ -22,5 +22,14 @@ print(highlighted_poems_details)
 
 # titles, posts, and dates
 titles = []
-posts = []
+poets = []
 dates = []
+
+for lst in highlighted_poems_details:
+    titles.append(lst[0])
+    poets.append(lst[1])
+    dates.append(lst[2])
+
+# for print out the data -- parallel arrays
+for i in range(len(titles)):
+  print('The poem {title} was published by {poet} in {date}'.format(title=titles[i], poet=poets[i], date=dates[i]))
