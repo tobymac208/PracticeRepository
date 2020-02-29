@@ -180,3 +180,19 @@ thread_sold_split = []
 for i in range(len(thread_sold)):
     thread_sold_split.append(thread_sold[i].split('&'))
 print(thread_sold_split)
+
+# count the occurrences of a color
+def color_count(color):
+    occurrence = 0
+
+    for val in thread_sold_split:
+        for data in val:
+            if color == data:
+                occurrence += 1
+    return occurrence
+print(color_count('white'))
+
+colors = ['red','yellow','green','white','black','blue','purple']
+
+for val in colors:
+    print('There were {number_sold} threads of color {color} sold today.'.format(number_sold=color_count(val), color=val))
