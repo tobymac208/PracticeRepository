@@ -136,11 +136,11 @@ print_whitespace()
 
 # Strip off the whitespace
 transactions_clean = []
-for i in range(len(daily_transactions_split)):
-    first = daily_transactions_split[i][0]
-    second = daily_transactions_split[i][1]
-    third = daily_transactions_split[i][2]
-    fourth = daily_transactions_split[i][3]
+for set in daily_transactions_split:
+    first = set[0]
+    second = set[1]
+    third = set[2]
+    fourth = set[3]
 
     lst_append = []
     lst_append.append(first.strip())
