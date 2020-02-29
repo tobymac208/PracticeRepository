@@ -128,27 +128,22 @@ print_whitespace()
 # Split each set of data into it's own data
 daily_transactions_split = []
 
-for i in range(len(daily_transactions)):
-    daily_transactions_split.append(daily_transactions[i].split(between_data))
+for val in daily_transactions:
+    daily_transactions_split.append(val.split(between_data))
 print(daily_transactions_split)
 
 print_whitespace()
 
 # Strip off the whitespace
 transactions_clean = []
+
 for set in daily_transactions_split:
-    first = set[0]
-    second = set[1]
-    third = set[2]
-    fourth = set[3]
-
     lst_append = []
-    lst_append.append(first.strip())
-    lst_append.append(second.strip())
-    lst_append.append(third.strip())
-    lst_append.append(fourth.strip())
+    for i in range(len(set)):
+        lst_append.append(set[i].strip())
 
-    transactions_clean.append(lst_append)
+        if i == len(set) - 1:
+            transactions_clean.append(lst_append)
 
 print(transactions_clean)
 
